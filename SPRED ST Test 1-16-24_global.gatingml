@@ -1,0 +1,560 @@
+<?xml version="1.0" encoding="UTF-8"?><gating:Gating-ML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:gating="http://www.isac-net.org/std/Gating-ML/v2.0/gating"
+  xmlns:transforms="http://www.isac-net.org/std/Gating-ML/v2.0/transformations"
+  xmlns:data-type="http://www.isac-net.org/std/Gating-ML/v2.0/datatypes"
+  xsi:schemaLocation="
+    http://www.isac-net.org/std/Gating-ML/v2.0/gating
+    http://flowcyt.sourceforge.net/gating/2.0/xsd/Gating-ML.v2.0.xsd
+    http://www.isac-net.org/std/Gating-ML/v2.0/transformations
+    http://flowcyt.sourceforge.net/gating/2.0/xsd/Transformations.v2.0.xsd
+    http://www.isac-net.org/std/Gating-ML/v2.0/datatypes
+    http://flowcyt.sourceforge.net/gating/2.0/xsd/DataTypes.v2.0.xsd">
+
+	<transforms:transformation transforms:id="LinearScale_1_2713815" transforms:boundMin="1" transforms:boundMax="2713815">
+		<!-- The identity function, (x + 0)/(1 + 0) == x -->
+		<transforms:flin transforms:A="0" transforms:T="1" />
+	</transforms:transformation>
+
+	<transforms:transformation transforms:id="LinearScale_1_291" transforms:boundMin="1" transforms:boundMax="291">
+		<!-- The identity function, (x + 0)/(1 + 0) == x -->
+		<transforms:flin transforms:A="0" transforms:T="1" />
+	</transforms:transformation>
+
+	<transforms:transformation transforms:id="ArcSinhScale_5_-5_12000" transforms:boundMin="-5" transforms:boundMax="12000">
+		<!-- The simple ArcSinh function, (ArcSinh[x*Sinh[M*LN10]/T] + A*LN10)/((M + A)*LN10) == ArcSinh[x / cofactor] -->
+		<transforms:fasinh transforms:T="5.8760059682190064" transforms:M="0.43429448190325176" transforms:A="0.0"/>
+	</transforms:transformation>
+
+	<gating:PolygonGate gating:id="_65a730da868ebb26e678fa01"  uuid="65a730da868ebb26e678fa6e" gid="65a730da868ebb26e678fa37" name="singlets">
+		<gating:dimension gating:compensation-ref="uncompensated" gating:transformation-ref="LinearScale_1_291">
+			<data-type:fcs-dimension data-type:name="Event_length"/>
+		</gating:dimension>
+		<gating:dimension gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Ir191Di"/>
+		</gating:dimension>
+		<gating:vertex>
+			<gating:coordinate data-type:value="9.470790378006873" />
+			<gating:coordinate data-type:value="3.3794550495254225" />
+		</gating:vertex>
+		<gating:vertex>
+			<gating:coordinate data-type:value="7.47766323024055" />
+			<gating:coordinate data-type:value="2.7363111048015125" />
+		</gating:vertex>
+		<gating:vertex>
+			<gating:coordinate data-type:value="18.439862542955325" />
+			<gating:coordinate data-type:value="3.282983457816835" />
+		</gating:vertex>
+		<gating:vertex>
+			<gating:coordinate data-type:value="18.439862542955325" />
+			<gating:coordinate data-type:value="4.151227783194113" />
+		</gating:vertex>
+		<gating:vertex>
+			<gating:coordinate data-type:value="9.470790378006873" />
+			<gating:coordinate data-type:value="4.601428544500849" />
+		</gating:vertex>
+	</gating:PolygonGate>
+
+	<gating:RectangleGate gating:id="_65a730da868ebb26e678fa34" gating:parent_id="_65a730da868ebb26e678fa01" uuid="65a730da868ebb26e678fa98" gid="65a730da868ebb26e678fa6d" name="leukocytes CD61+">
+		<gating:dimension gating:min="2.3504247379671668" gating:max="4.923000516862804" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="In113Di"/>
+		</gating:dimension>
+		<gating:dimension gating:min="1.4500232153536936" gating:max="6.4504673855820895" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Ir191Di"/>
+		</gating:dimension>
+	</gating:RectangleGate>
+
+	<gating:RectangleGate gating:id="_65a730da868ebb26e678fa02" gating:parent_id="_65a730da868ebb26e678fa01" uuid="65a730da868ebb26e678fa6f" gid="65a730da868ebb26e678fa38" name="leukocytes">
+		<gating:dimension gating:min="-0.17391524507417722" gating:max="1.9060866199797977" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="In113Di"/>
+		</gating:dimension>
+		<gating:dimension gating:min="1.4385501381781456" gating:max="6.305759998019209" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Ir191Di"/>
+		</gating:dimension>
+	</gating:RectangleGate>
+
+	<gating:RectangleGate gating:id="_65a730da868ebb26e678fa03" gating:parent_id="_65a730da868ebb26e678fa02" uuid="65a730da868ebb26e678fa70" gid="65a730da868ebb26e678fa39" name="live_leukocytes">
+		<gating:dimension gating:min="-0.3186226326370566" gating:max="1.514337609826084" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Dy161Di"/>
+		</gating:dimension>
+		<gating:dimension gating:min="2.2539531462585805" gating:max="5.710851849149593" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Ir191Di"/>
+		</gating:dimension>
+	</gating:RectangleGate>
+
+	<gating:EllipsoidGate gating:id="_65a730da868ebb26e678fa05" gating:parent_id="_65a730da868ebb26e678fa03" uuid="65a730da868ebb26e678fa72" gid="65a730da868ebb26e678fa3b" name="granulocytes">
+		<gating:dimension gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="La139Di"/>
+		</gating:dimension>
+		<gating:dimension gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="In115Di"/>
+		</gating:dimension>
+		<gating:mean>
+			<gating:coordinate data-type:value="4.39240676" />
+			<gating:coordinate data-type:value="2.43081749" />
+		</gating:mean>
+		<gating:covarianceMatrix>
+			<gating:row>
+				<gating:entry data-type:value="2.32423127" />
+				<gating:entry data-type:value="2.33386881" />
+			</gating:row>
+			<gating:row>
+				<gating:entry data-type:value="2.33386881" />
+				<gating:entry data-type:value="5.23182816" />
+			</gating:row>
+		</gating:covarianceMatrix>
+		<gating:distanceSquare data-type:value="1" />
+	</gating:EllipsoidGate>
+
+	<gating:PolygonGate gating:id="_65a730da868ebb26e678fa04" gating:parent_id="_65a730da868ebb26e678fa03" uuid="65a730da868ebb26e678fa71" gid="65a730da868ebb26e678fa3a" name="Mononuclear_cells">
+		<gating:dimension gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="La139Di"/>
+		</gating:dimension>
+		<gating:dimension gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="In115Di"/>
+		</gating:dimension>
+		<gating:vertex>
+			<gating:coordinate data-type:value="0.01902793834299621" />
+			<gating:coordinate data-type:value="4.9390791154809035" />
+		</gating:vertex>
+		<gating:vertex>
+			<gating:coordinate data-type:value="-0.18999384369227568" />
+			<gating:coordinate data-type:value="2.382581935203361" />
+		</gating:vertex>
+		<gating:vertex>
+			<gating:coordinate data-type:value="1.900223976660433" />
+			<gating:coordinate data-type:value="1.9323811738966277" />
+		</gating:vertex>
+		<gating:vertex>
+			<gating:coordinate data-type:value="3.2990620564349338" />
+			<gating:coordinate data-type:value="4.167306381812215" />
+		</gating:vertex>
+		<gating:vertex>
+			<gating:coordinate data-type:value="3.170433267490152" />
+			<gating:coordinate data-type:value="4.971236312717098" />
+		</gating:vertex>
+		<gating:vertex>
+			<gating:coordinate data-type:value="2.077088561459509" />
+			<gating:coordinate data-type:value="5.260651087842857" />
+		</gating:vertex>
+	</gating:PolygonGate>
+
+	<gating:RectangleGate gating:id="_65a730da868ebb26e678fa09" gating:parent_id="_65a730da868ebb26e678fa04" uuid="65a730da868ebb26e678fa76" gid="65a730da868ebb26e678fa3f" name="Bcells">
+		<gating:dimension gating:min="-0.12567944921988383" gating:max="1.5143376098260843" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Er170Di"/>
+		</gating:dimension>
+		<gating:dimension gating:min="0.9355080595745663" gating:max="4.504956952792262" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Nd142Di"/>
+		</gating:dimension>
+	</gating:RectangleGate>
+
+	<gating:RectangleGate gating:id="_65a730da868ebb26e678fa08" gating:parent_id="_65a730da868ebb26e678fa04" uuid="65a730da868ebb26e678fa75" gid="65a730da868ebb26e678fa3e" name="CD19negCD3negcells">
+		<gating:dimension gating:min="-0.12567944921988383" gating:max="1.4821804125898892" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Er170Di"/>
+		</gating:dimension>
+		<gating:dimension gating:min="-0.28646543540086133" gating:max="0.9355080595745663" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Nd142Di"/>
+		</gating:dimension>
+	</gating:RectangleGate>
+
+	<gating:RectangleGate gating:id="_65a730da868ebb26e678fa07" gating:parent_id="_65a730da868ebb26e678fa04" uuid="65a730da868ebb26e678fa74" gid="65a730da868ebb26e678fa3d" name="Tcells">
+		<gating:dimension gating:min="2.9614114854548803" gating:max="7.2061615206326834" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Er170Di"/>
+		</gating:dimension>
+		<gating:dimension gating:min="-0.15783664645607942" gating:max="1.1606084402279346" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Nd142Di"/>
+		</gating:dimension>
+	</gating:RectangleGate>
+
+	<gating:RectangleGate gating:id="_65a730da868ebb26e678fa2a" gating:parent_id="_65a730da868ebb26e678fa07" uuid="65a730da868ebb26e678fa8e" gid="65a730da868ebb26e678fa63" name="CD4posCD8pos">
+		<gating:dimension gating:min="2.0449313642233085" gating:max="5.662616053295298" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Nd145Di"/>
+		</gating:dimension>
+		<gating:dimension gating:min="2.318267540730973" gating:max="6.4504673855820895" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Nd146Di"/>
+		</gating:dimension>
+	</gating:RectangleGate>
+
+	<gating:RectangleGate gating:id="_65a730da868ebb26e678fa1a" gating:parent_id="_65a730da868ebb26e678fa07" uuid="65a730da868ebb26e678fa81" gid="65a730da868ebb26e678fa52" name="NKT">
+		<gating:dimension gating:min="1.4017874194994004" gating:max="6.3700743924916" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Lu176Di"/>
+		</gating:dimension>
+		<gating:dimension gating:min="1.417866018117498" gating:max="7.865384063974688" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Er170Di"/>
+		</gating:dimension>
+	</gating:RectangleGate>
+
+	<gating:RectangleGate gating:id="_65a730da868ebb26e678fa0c" gating:parent_id="_65a730da868ebb26e678fa07" uuid="65a730da868ebb26e678fa79" gid="65a730da868ebb26e678fa42" name="CD4negCD8neg">
+		<gating:dimension gating:min="-0.22215104092847038" gating:max="1.739437990479453" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Nd145Di"/>
+		</gating:dimension>
+		<gating:dimension gating:min="-0.25430823816466586" gating:max="1.932381173896626" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Nd146Di"/>
+		</gating:dimension>
+	</gating:RectangleGate>
+
+	<gating:RectangleGate gating:id="_65a730da868ebb26e678fa0b" gating:parent_id="_65a730da868ebb26e678fa07" uuid="65a730da868ebb26e678fa78" gid="65a730da868ebb26e678fa41" name="CD8Tcells">
+		<gating:dimension gating:min="-0.2060724423103727" gating:max="1.739437990479453" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Nd145Di"/>
+		</gating:dimension>
+		<gating:dimension gating:min="2.2539531462585805" gating:max="6.595174773144968" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Nd146Di"/>
+		</gating:dimension>
+	</gating:RectangleGate>
+
+	<gating:RectangleGate gating:id="_65a730da868ebb26e678fa0a" gating:parent_id="_65a730da868ebb26e678fa07" uuid="65a730da868ebb26e678fa77" gid="65a730da868ebb26e678fa40" name="CD4Tcells">
+		<gating:dimension gating:min="2.061009962841408" gating:max="5.630458856059104" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Nd145Di"/>
+		</gating:dimension>
+		<gating:dimension gating:min="-0.41509422434564297" gating:max="2.2217959490223844" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Nd146Di"/>
+		</gating:dimension>
+	</gating:RectangleGate>
+
+	<gating:RectangleGate gating:id="_65a730da868ebb26e678fa33" gating:parent_id="_65a730da868ebb26e678fa0a" uuid="65a730da868ebb26e678fa97" gid="65a730da868ebb26e678fa6c" name="CD4TCD45pos">
+		<gating:dimension gating:min="1.8519881808061371" gating:max="5.855559236712472" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Nd145Di"/>
+		</gating:dimension>
+		<gating:dimension gating:min="1.6429663987708663" gating:max="4.810450326536119" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Nd143Di"/>
+		</gating:dimension>
+	</gating:RectangleGate>
+
+	<gating:RectangleGate gating:id="_65a730da868ebb26e678fa32" gating:parent_id="_65a730da868ebb26e678fa0a" uuid="65a730da868ebb26e678fa96" gid="65a730da868ebb26e678fa6b" name="CD4TCD45RAneg">
+		<gating:dimension gating:min="2.1253243573137994" gating:max="5.823402039476276" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Nd145Di"/>
+		</gating:dimension>
+		<gating:dimension gating:min="0.0029493397248979702" gating:max="1.5464948070622804" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Nd143Di"/>
+		</gating:dimension>
+	</gating:RectangleGate>
+
+	<gating:RectangleGate gating:id="_65a730da868ebb26e678fa2b" gating:parent_id="_65a730da868ebb26e678fa0a" uuid="65a730da868ebb26e678fa8f" gid="65a730da868ebb26e678fa64" name="FoxP3posCD4T">
+		<gating:dimension gating:min="1.7876737863337446" gating:max="5.533987264350517" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Nd145Di"/>
+		</gating:dimension>
+		<gating:dimension gating:min="0.8390364678659801" gating:max="5.8073234408581795" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Dy162Di"/>
+		</gating:dimension>
+	</gating:RectangleGate>
+
+	<gating:RectangleGate gating:id="_65a730da868ebb26e678fa15" gating:parent_id="_65a730da868ebb26e678fa0a" uuid="65a730da868ebb26e678fa7f" gid="65a730da868ebb26e678fa4c" name="Th17">
+		<gating:dimension gating:min="-0.09352225198368835" gating:max="8.588921001789089" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Nd145Di"/>
+		</gating:dimension>
+		<gating:dimension gating:min="1.1606084402279346" gating:max="4.472799755556067" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Gd157Di"/>
+		</gating:dimension>
+	</gating:RectangleGate>
+
+	<gating:RectangleGate gating:id="_65a730da868ebb26e678fa12" gating:parent_id="_65a730da868ebb26e678fa0a" uuid="65a730da868ebb26e678fa7c" gid="65a730da868ebb26e678fa49" name="Th1">
+		<gating:dimension gating:min="0.7425648761573935" gating:max="4.0869133887217215" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Gd160Di"/>
+		</gating:dimension>
+		<gating:dimension gating:min="1.0962940457555437" gating:max="5.823402039476275" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="In115Di"/>
+		</gating:dimension>
+	</gating:RectangleGate>
+
+	<gating:RectangleGate gating:id="_65a730da868ebb26e678fa11" gating:parent_id="_65a730da868ebb26e678fa0a" uuid="65a730da868ebb26e678fa7b" gid="65a730da868ebb26e678fa48" name="Th2">
+		<gating:dimension gating:min="-0.3507798298732521" gating:max="8.846178579678652" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Nd145Di"/>
+		</gating:dimension>
+		<gating:dimension gating:min="1.2249228347003256" gating:max="4.32809236799319" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Dy163Di"/>
+		</gating:dimension>
+	</gating:RectangleGate>
+
+	<gating:QuadrantGate gating:id="_65a730da868ebb26e678fa7a_65a730da868ebb26e678fa0d_65a730da868ebb26e678fa0e_65a730da868ebb26e678fa0f_65a730da868ebb26e678fa10" gating:parent_id="_65a730da868ebb26e678fa0a" uuid="65a730da868ebb26e678fa7a" gid="65a730da868ebb26e678fa43">
+		<gating:divider gating:id="_65a730da868ebb26e678fa7a_xdiv" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Nd143Di"/>
+			<gating:value>1.417866018117498</gating:value>
+		</gating:divider>
+		<gating:divider gating:id="_65a730da868ebb26e678fa7a_ydiv" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Yb172Di"/>
+			<gating:value>1.4500232153536936</gating:value>
+		</gating:divider>
+		<gating:Quadrant gating:id="_65a730da868ebb26e678fa0d" gid="65a730da868ebb26e678fa44" name="CD4Tnaive">
+			<gating:position gating:divider_ref="_65a730da868ebb26e678fa7a_xdiv" gating:location="2.417866018117498" />
+			<gating:position gating:divider_ref="_65a730da868ebb26e678fa7a_ydiv" gating:location="2.450023215353694" />
+		</gating:Quadrant>
+		<gating:Quadrant gating:id="_65a730da868ebb26e678fa0e" gid="65a730da868ebb26e678fa45" name="CD4Tcm">
+			<gating:position gating:divider_ref="_65a730da868ebb26e678fa7a_xdiv" gating:location="0.417866018117498" />
+			<gating:position gating:divider_ref="_65a730da868ebb26e678fa7a_ydiv" gating:location="2.450023215353694" />
+		</gating:Quadrant>
+		<gating:Quadrant gating:id="_65a730da868ebb26e678fa0f" gid="65a730da868ebb26e678fa46" name="CD4Tem">
+			<gating:position gating:divider_ref="_65a730da868ebb26e678fa7a_xdiv" gating:location="0.417866018117498" />
+			<gating:position gating:divider_ref="_65a730da868ebb26e678fa7a_ydiv" gating:location="0.4500232153536936" />
+		</gating:Quadrant>
+		<gating:Quadrant gating:id="_65a730da868ebb26e678fa10" gid="65a730da868ebb26e678fa47" name="CD4Temra">
+			<gating:position gating:divider_ref="_65a730da868ebb26e678fa7a_xdiv" gating:location="2.417866018117498" />
+			<gating:position gating:divider_ref="_65a730da868ebb26e678fa7a_ydiv" gating:location="0.4500232153536936" />
+		</gating:Quadrant>
+	</gating:QuadrantGate>
+
+	<gating:RectangleGate gating:id="_65a730da868ebb26e678fa14" gating:parent_id="_65a730da868ebb26e678fa12" uuid="65a730da868ebb26e678fa7e" gid="65a730da868ebb26e678fa4b" name="Th1naive">
+		<gating:dimension gating:min="1.3053158277908161" gating:max="7.431261901286046" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Nd143Di"/>
+		</gating:dimension>
+		<gating:dimension gating:min="3.7653414163597674" gating:max="6.964982541361218" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Er170Di"/>
+		</gating:dimension>
+	</gating:RectangleGate>
+
+	<gating:RectangleGate gating:id="_65a730da868ebb26e678fa13" gating:parent_id="_65a730da868ebb26e678fa12" uuid="65a730da868ebb26e678fa7d" gid="65a730da868ebb26e678fa4a" name="Th1mem">
+		<gating:dimension gating:min="-0.43117282296374126" gating:max="1.2892372291727165" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Nd143Di"/>
+		</gating:dimension>
+		<gating:dimension gating:min="3.7653414163597674" gating:max="6.93282534412502" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Er170Di"/>
+		</gating:dimension>
+	</gating:RectangleGate>
+
+	<gating:RectangleGate gating:id="_65a730da868ebb26e678fa2c" gating:parent_id="_65a730da868ebb26e678fa2b" uuid="65a730da868ebb26e678fa90" gid="65a730da868ebb26e678fa65" name="Treg">
+		<gating:dimension gating:min="1.8359095821880396" gating:max="5.276729686460953" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Nd145Di"/>
+		</gating:dimension>
+		<gating:dimension gating:min="0.29236411485065716" gating:max="4.649664340355143" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Tm169Di"/>
+		</gating:dimension>
+	</gating:RectangleGate>
+
+	<gating:RectangleGate gating:id="_65a730da868ebb26e678fa2e" gating:parent_id="_65a730da868ebb26e678fa2c" uuid="65a730da868ebb26e678fa92" gid="65a730da868ebb26e678fa67" name="Tregnaive">
+		<gating:dimension gating:min="1.0802154471374479" gating:max="6.112816814602036" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Nd143Di"/>
+		</gating:dimension>
+		<gating:dimension gating:min="4.279856572138894" gating:max="6.948903942743118" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Er170Di"/>
+		</gating:dimension>
+	</gating:RectangleGate>
+
+	<gating:RectangleGate gating:id="_65a730da868ebb26e678fa2d" gating:parent_id="_65a730da868ebb26e678fa2c" uuid="65a730da868ebb26e678fa91" gid="65a730da868ebb26e678fa66" name="Tregmem">
+		<gating:dimension gating:min="-0.9135307815066728" gating:max="1.0641368485193483" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Nd143Di"/>
+		</gating:dimension>
+		<gating:dimension gating:min="4.279856572138895" gating:max="6.964982541361218" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Er170Di"/>
+		</gating:dimension>
+	</gating:RectangleGate>
+
+	<gating:RectangleGate gating:id="_65a730da868ebb26e678fa31" gating:parent_id="_65a730da868ebb26e678fa0b" uuid="65a730da868ebb26e678fa95" gid="65a730da868ebb26e678fa6a" name="CD8TnaiveCD45pos">
+		<gating:dimension gating:min="1.9002239766604303" gating:max="4.537114150028459" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Nd143Di"/>
+		</gating:dimension>
+		<gating:dimension gating:min="1.4500232153536936" gating:max="7.077532731687899" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Nd146Di"/>
+		</gating:dimension>
+	</gating:RectangleGate>
+
+	<gating:RectangleGate gating:id="_65a730da868ebb26e678fa30" gating:parent_id="_65a730da868ebb26e678fa0b" uuid="65a730da868ebb26e678fa94" gid="65a730da868ebb26e678fa69" name="CD8TmemCD45neg">
+		<gating:dimension gating:min="-0.14175804783798174" gating:max="1.8037523849518438" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Nd143Di"/>
+		</gating:dimension>
+		<gating:dimension gating:min="1.4500232153536936" gating:max="7.045375534451704" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Nd146Di"/>
+		</gating:dimension>
+	</gating:RectangleGate>
+
+	<gating:RectangleGate gating:id="_65a730da868ebb26e678fa2f" gating:parent_id="_65a730da868ebb26e678fa0b" uuid="65a730da868ebb26e678fa93" gid="65a730da868ebb26e678fa68" name="MAITCD8pos">
+		<gating:dimension gating:min="2.028852765605212" gating:max="5.984188025657254" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Nd146Di"/>
+		</gating:dimension>
+		<gating:dimension gating:min="0.9998224540469564" gating:max="5.678694651913397" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Gd157Di"/>
+		</gating:dimension>
+	</gating:RectangleGate>
+
+	<gating:QuadrantGate gating:id="_65a730da868ebb26e678fa80_65a730da868ebb26e678fa16_65a730da868ebb26e678fa17_65a730da868ebb26e678fa18_65a730da868ebb26e678fa19" gating:parent_id="_65a730da868ebb26e678fa0b" uuid="65a730da868ebb26e678fa80" gid="65a730da868ebb26e678fa4d">
+		<gating:divider gating:id="_65a730da868ebb26e678fa80_xdiv" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Nd143Di"/>
+			<gating:value>1.2892372291727165</gating:value>
+		</gating:divider>
+		<gating:divider gating:id="_65a730da868ebb26e678fa80_ydiv" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Yb172Di"/>
+			<gating:value>2.3504247379671668</gating:value>
+		</gating:divider>
+		<gating:Quadrant gating:id="_65a730da868ebb26e678fa16" gid="65a730da868ebb26e678fa4e" name="CD8TnaiveCD45RAposCD62Lpos">
+			<gating:position gating:divider_ref="_65a730da868ebb26e678fa80_xdiv" gating:location="2.2892372291727163" />
+			<gating:position gating:divider_ref="_65a730da868ebb26e678fa80_ydiv" gating:location="3.3504247379671668" />
+		</gating:Quadrant>
+		<gating:Quadrant gating:id="_65a730da868ebb26e678fa17" gid="65a730da868ebb26e678fa4f" name="CD8Tcm">
+			<gating:position gating:divider_ref="_65a730da868ebb26e678fa80_xdiv" gating:location="0.28923722917271655" />
+			<gating:position gating:divider_ref="_65a730da868ebb26e678fa80_ydiv" gating:location="3.3504247379671668" />
+		</gating:Quadrant>
+		<gating:Quadrant gating:id="_65a730da868ebb26e678fa18" gid="65a730da868ebb26e678fa50" name="CD8Tem">
+			<gating:position gating:divider_ref="_65a730da868ebb26e678fa80_xdiv" gating:location="0.28923722917271655" />
+			<gating:position gating:divider_ref="_65a730da868ebb26e678fa80_ydiv" gating:location="1.3504247379671668" />
+		</gating:Quadrant>
+		<gating:Quadrant gating:id="_65a730da868ebb26e678fa19" gid="65a730da868ebb26e678fa51" name="CD8Temra">
+			<gating:position gating:divider_ref="_65a730da868ebb26e678fa80_xdiv" gating:location="2.2892372291727163" />
+			<gating:position gating:divider_ref="_65a730da868ebb26e678fa80_ydiv" gating:location="1.3504247379671668" />
+		</gating:Quadrant>
+	</gating:QuadrantGate>
+
+	<gating:RectangleGate gating:id="_65a730da868ebb26e678fa1d" gating:parent_id="_65a730da868ebb26e678fa08" uuid="65a730da868ebb26e678fa84" gid="65a730da868ebb26e678fa55" name="NK">
+		<gating:dimension gating:min="-0.15783664645607942" gating:max="1.6429663987708663" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Lu175Di"/>
+		</gating:dimension>
+		<gating:dimension gating:min="1.5143376098260843" gating:max="6.466545984200185" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Pr141Di"/>
+		</gating:dimension>
+	</gating:RectangleGate>
+
+	<gating:RectangleGate gating:id="_65a730da868ebb26e678fa1c" gating:parent_id="_65a730da868ebb26e678fa08" uuid="65a730da868ebb26e678fa83" gid="65a730da868ebb26e678fa54" name="linneg">
+		<gating:dimension gating:min="-0.10960085060178615" gating:max="6.112816814602036" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Lu175Di"/>
+		</gating:dimension>
+		<gating:dimension gating:min="-0.1899938436922749" gating:max="1.4982590112079868" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Pr141Di"/>
+		</gating:dimension>
+	</gating:RectangleGate>
+
+	<gating:QuadrantGate gating:id="_65a730da868ebb26e678fa87_65a730da868ebb26e678fa20_65a730da868ebb26e678fa21_65a730da868ebb26e678fa22_65a730da868ebb26e678fa23" gating:parent_id="_65a730da868ebb26e678fa1c" uuid="65a730da868ebb26e678fa87" gid="65a730da868ebb26e678fa58">
+		<gating:divider gating:id="_65a730da868ebb26e678fa87_xdiv" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Ho165Di"/>
+			<gating:value>1.4821804125898892</gating:value>
+		</gating:divider>
+		<gating:divider gating:id="_65a730da868ebb26e678fa87_ydiv" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Lu175Di"/>
+			<gating:value>1.8037523849518438</gating:value>
+		</gating:divider>
+		<gating:Quadrant gating:id="_65a730da868ebb26e678fa20" gid="65a730da868ebb26e678fa59" name="intMC">
+			<gating:position gating:divider_ref="_65a730da868ebb26e678fa87_xdiv" gating:location="2.482180412589889" />
+			<gating:position gating:divider_ref="_65a730da868ebb26e678fa87_ydiv" gating:location="2.803752384951844" />
+		</gating:Quadrant>
+		<gating:Quadrant gating:id="_65a730da868ebb26e678fa21" gid="65a730da868ebb26e678fa5a" name="cMC">
+			<gating:position gating:divider_ref="_65a730da868ebb26e678fa87_xdiv" gating:location="0.4821804125898892" />
+			<gating:position gating:divider_ref="_65a730da868ebb26e678fa87_ydiv" gating:location="2.803752384951844" />
+		</gating:Quadrant>
+		<gating:Quadrant gating:id="_65a730da868ebb26e678fa22" gid="65a730da868ebb26e678fa5b" name="DC">
+			<gating:position gating:divider_ref="_65a730da868ebb26e678fa87_xdiv" gating:location="0.4821804125898892" />
+			<gating:position gating:divider_ref="_65a730da868ebb26e678fa87_ydiv" gating:location="0.8037523849518438" />
+		</gating:Quadrant>
+		<gating:Quadrant gating:id="_65a730da868ebb26e678fa23" gid="65a730da868ebb26e678fa5c" name="ncMc">
+			<gating:position gating:divider_ref="_65a730da868ebb26e678fa87_xdiv" gating:location="2.482180412589889" />
+			<gating:position gating:divider_ref="_65a730da868ebb26e678fa87_ydiv" gating:location="0.8037523849518438" />
+		</gating:Quadrant>
+	</gating:QuadrantGate>
+
+	<gating:RectangleGate gating:id="_65a730da868ebb26e678fa28" gating:parent_id="_65a730da868ebb26e678fa22" uuid="65a730da868ebb26e678fa8c" gid="65a730da868ebb26e678fa61" name="HLADRnegCD123pos">
+		<gating:dimension gating:min="3.3633764509073236" gating:max="5.823402039476276" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Nd148Di"/>
+		</gating:dimension>
+		<gating:dimension gating:min="-0.15783664645607942" gating:max="1.8198309835699413" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Yb174Di"/>
+		</gating:dimension>
+	</gating:RectangleGate>
+
+	<gating:RectangleGate gating:id="_65a730da868ebb26e678fa27" gating:parent_id="_65a730da868ebb26e678fa22" uuid="65a730da868ebb26e678fa8b" gid="65a730da868ebb26e678fa60" name="mDC">
+		<gating:dimension gating:min="1.5947306029165746" gating:max="5.43751567264193" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Sm147Di"/>
+		</gating:dimension>
+		<gating:dimension gating:min="1.868066779424236" gating:max="7.6081264860851245" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Yb174Di"/>
+		</gating:dimension>
+	</gating:RectangleGate>
+
+	<gating:RectangleGate gating:id="_65a730da868ebb26e678fa26" gating:parent_id="_65a730da868ebb26e678fa22" uuid="65a730da868ebb26e678fa8a" gid="65a730da868ebb26e678fa5f" name="pDC">
+		<gating:dimension gating:min="2.9774900840729783" gating:max="6.337917195255404" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Nd148Di"/>
+		</gating:dimension>
+		<gating:dimension gating:min="2.2539531462585805" gating:max="6.836353752416434" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Yb174Di"/>
+		</gating:dimension>
+	</gating:RectangleGate>
+
+	<gating:RectangleGate gating:id="_65a730da868ebb26e678fa29" gating:parent_id="_65a730da868ebb26e678fa28" uuid="65a730da868ebb26e678fa8d" gid="65a730da868ebb26e678fa62" name="Baso">
+		<gating:dimension gating:min="1.417866018117498" gating:max="7.6563622819394155" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Gd156Di"/>
+		</gating:dimension>
+		<gating:dimension gating:min="1.385708820881304" gating:max="3.652791226033082" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Dy163Di"/>
+		</gating:dimension>
+	</gating:RectangleGate>
+
+	<gating:RectangleGate gating:id="_65a730da868ebb26e678fa24" gating:parent_id="_65a730da868ebb26e678fa21" uuid="65a730da868ebb26e678fa88" gid="65a730da868ebb26e678fa5d" name="cMC_CD14posCD16negCCR2pos">
+		<gating:dimension gating:min="1.9484597725147235" gating:max="5.791244842240081" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Lu175Di"/>
+		</gating:dimension>
+		<gating:dimension gating:min="2.414739132439558" gating:max="5.968109427039156" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Yb173Di"/>
+		</gating:dimension>
+	</gating:RectangleGate>
+
+	<gating:RectangleGate gating:id="_65a730da868ebb26e678fa25" gating:parent_id="_65a730da868ebb26e678fa24" uuid="65a730da868ebb26e678fa89" gid="65a730da868ebb26e678fa5e" name="MDSC">
+		<gating:dimension gating:min="1.5786520042984746" gating:max="6.273602800783013" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Lu175Di"/>
+		</gating:dimension>
+		<gating:dimension gating:min="0.0029493397248979702" gating:max="3.636712627414986" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Yb174Di"/>
+		</gating:dimension>
+	</gating:RectangleGate>
+
+	<gating:RectangleGate gating:id="_65a730da868ebb26e678fa1f" gating:parent_id="_65a730da868ebb26e678fa1d" uuid="65a730da868ebb26e678fa86" gid="65a730da868ebb26e678fa57" name="CD56dimCD16posNK">
+		<gating:dimension gating:min="0.0029493397248979702" gating:max="4.279856572138896" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Lu176Di"/>
+		</gating:dimension>
+		<gating:dimension gating:min="1.385708820881304" gating:max="6.273602800783013" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Ho165Di"/>
+		</gating:dimension>
+	</gating:RectangleGate>
+
+	<gating:RectangleGate gating:id="_65a730da868ebb26e678fa1e" gating:parent_id="_65a730da868ebb26e678fa1d" uuid="65a730da868ebb26e678fa85" gid="65a730da868ebb26e678fa56" name="CD56brightCD16negNK">
+		<gating:dimension gating:min="2.575525118620535" gating:max="6.177131209074426" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Lu176Di"/>
+		</gating:dimension>
+		<gating:dimension gating:min="0.0029493397248979702" gating:max="1.2892372291727165" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Ho165Di"/>
+		</gating:dimension>
+	</gating:RectangleGate>
+
+	<gating:RectangleGate gating:id="_65a730da868ebb26e678fa1b" gating:parent_id="_65a730da868ebb26e678fa09" uuid="65a730da868ebb26e678fa82" gid="65a730da868ebb26e678fa53" name="CD7negCD14neg">
+		<gating:dimension gating:min="-0.07744365336559067" gating:max="1.5464948070622804" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Lu175Di"/>
+		</gating:dimension>
+		<gating:dimension gating:min="-0.15783664645607942" gating:max="1.4339446167355971" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Pr141Di"/>
+		</gating:dimension>
+	</gating:RectangleGate>
+
+	<gating:RectangleGate gating:id="_65a730da868ebb26e678fa06" gating:parent_id="_65a730da868ebb26e678fa05" uuid="65a730da868ebb26e678fa73" gid="65a730da868ebb26e678fa3c" name="CXCR4pos_neutrophils">
+		<gating:dimension gating:min="3.3794550495254216" gating:max="8.524606607316695" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Yb171Di"/>
+		</gating:dimension>
+		<gating:dimension gating:min="3.347297852289225" gating:max="6.948903942743118" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="La139Di"/>
+		</gating:dimension>
+	</gating:RectangleGate>
+
+	<gating:EllipsoidGate gating:id="_65a730da868ebb26e678fa35" gating:parent_id="_65a730da868ebb26e678fa34" uuid="65a730da868ebb26e678fa72" gid="65a730da868ebb26e678fa3b" name="granulocytes">
+		<gating:dimension gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="La139Di"/>
+		</gating:dimension>
+		<gating:dimension gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="In115Di"/>
+		</gating:dimension>
+		<gating:mean>
+			<gating:coordinate data-type:value="4.39240676" />
+			<gating:coordinate data-type:value="2.43081749" />
+		</gating:mean>
+		<gating:covarianceMatrix>
+			<gating:row>
+				<gating:entry data-type:value="2.32423127" />
+				<gating:entry data-type:value="2.33386881" />
+			</gating:row>
+			<gating:row>
+				<gating:entry data-type:value="2.33386881" />
+				<gating:entry data-type:value="5.23182816" />
+			</gating:row>
+		</gating:covarianceMatrix>
+		<gating:distanceSquare data-type:value="1" />
+	</gating:EllipsoidGate>
+
+	<gating:RectangleGate gating:id="_65a730da868ebb26e678fa36" gating:parent_id="_65a730da868ebb26e678fa35" uuid="65a730da868ebb26e678fa73" gid="65a730da868ebb26e678fa3c" name="CXCR4pos_neutrophils">
+		<gating:dimension gating:min="3.3794550495254216" gating:max="8.524606607316695" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="Yb171Di"/>
+		</gating:dimension>
+		<gating:dimension gating:min="3.347297852289225" gating:max="6.948903942743118" gating:compensation-ref="uncompensated" gating:transformation-ref="ArcSinhScale_5_-5_12000">
+			<data-type:fcs-dimension data-type:name="La139Di"/>
+		</gating:dimension>
+	</gating:RectangleGate>
+</gating:Gating-ML>
